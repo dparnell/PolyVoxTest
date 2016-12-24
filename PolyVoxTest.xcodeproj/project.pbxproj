@@ -1,0 +1,306 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		658733171E0E07F6005480FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 658733161E0E07F6005480FC /* AppDelegate.m */; };
+		6587331A1E0E07F6005480FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 658733191E0E07F6005480FC /* main.m */; };
+		6587331D1E0E07F6005480FC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6587331C1E0E07F6005480FC /* ViewController.m */; };
+		6587331F1E0E07F6005480FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6587331E1E0E07F6005480FC /* Assets.xcassets */; };
+		658733221E0E07F6005480FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 658733201E0E07F6005480FC /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		658733121E0E07F6005480FC /* PolyVoxTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolyVoxTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		658733151E0E07F6005480FC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		658733161E0E07F6005480FC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		658733191E0E07F6005480FC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6587331B1E0E07F6005480FC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6587331C1E0E07F6005480FC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6587331E1E0E07F6005480FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		658733211E0E07F6005480FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		658733231E0E07F6005480FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6587330F1E0E07F6005480FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		658733091E0E07F6005480FC = {
+			isa = PBXGroup;
+			children = (
+				658733141E0E07F6005480FC /* PolyVoxTest */,
+				658733131E0E07F6005480FC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		658733131E0E07F6005480FC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				658733121E0E07F6005480FC /* PolyVoxTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		658733141E0E07F6005480FC /* PolyVoxTest */ = {
+			isa = PBXGroup;
+			children = (
+				658733151E0E07F6005480FC /* AppDelegate.h */,
+				658733161E0E07F6005480FC /* AppDelegate.m */,
+				6587331B1E0E07F6005480FC /* ViewController.h */,
+				6587331C1E0E07F6005480FC /* ViewController.m */,
+				6587331E1E0E07F6005480FC /* Assets.xcassets */,
+				658733201E0E07F6005480FC /* Main.storyboard */,
+				658733231E0E07F6005480FC /* Info.plist */,
+				658733181E0E07F6005480FC /* Supporting Files */,
+			);
+			path = PolyVoxTest;
+			sourceTree = "<group>";
+		};
+		658733181E0E07F6005480FC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				658733191E0E07F6005480FC /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		658733111E0E07F6005480FC /* PolyVoxTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 658733261E0E07F6005480FC /* Build configuration list for PBXNativeTarget "PolyVoxTest" */;
+			buildPhases = (
+				6587330E1E0E07F6005480FC /* Sources */,
+				6587330F1E0E07F6005480FC /* Frameworks */,
+				658733101E0E07F6005480FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PolyVoxTest;
+			productName = PolyVoxTest;
+			productReference = 658733121E0E07F6005480FC /* PolyVoxTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6587330A1E0E07F6005480FC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Automagic Software";
+				TargetAttributes = {
+					658733111E0E07F6005480FC = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = AP4EL24GMZ;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 6587330D1E0E07F6005480FC /* Build configuration list for PBXProject "PolyVoxTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 658733091E0E07F6005480FC;
+			productRefGroup = 658733131E0E07F6005480FC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				658733111E0E07F6005480FC /* PolyVoxTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		658733101E0E07F6005480FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6587331F1E0E07F6005480FC /* Assets.xcassets in Resources */,
+				658733221E0E07F6005480FC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6587330E1E0E07F6005480FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6587331D1E0E07F6005480FC /* ViewController.m in Sources */,
+				6587331A1E0E07F6005480FC /* main.m in Sources */,
+				658733171E0E07F6005480FC /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		658733201E0E07F6005480FC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				658733211E0E07F6005480FC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		658733241E0E07F6005480FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		658733251E0E07F6005480FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		658733271E0E07F6005480FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = AP4EL24GMZ;
+				INFOPLIST_FILE = PolyVoxTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.automagicsoftware.PolyVoxTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		658733281E0E07F6005480FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = AP4EL24GMZ;
+				INFOPLIST_FILE = PolyVoxTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.automagicsoftware.PolyVoxTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6587330D1E0E07F6005480FC /* Build configuration list for PBXProject "PolyVoxTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				658733241E0E07F6005480FC /* Debug */,
+				658733251E0E07F6005480FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		658733261E0E07F6005480FC /* Build configuration list for PBXNativeTarget "PolyVoxTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				658733271E0E07F6005480FC /* Debug */,
+				658733281E0E07F6005480FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6587330A1E0E07F6005480FC /* Project object */;
+}
