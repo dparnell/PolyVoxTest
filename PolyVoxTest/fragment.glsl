@@ -1,19 +1,23 @@
-#version 140
+#version 330 core
 
-// Passed in from the vertex shader
+// Interpolated values from the vertex shaders
+in vec3 voxelColor;
 in vec4 worldPosition;
-in vec4 worldNormal;
 
-// the color that gets written to the display
-out vec4 outputColor;
+// Output data
+out vec3 outputColor;
 
 void main()
 {
-    // Again, for the purposes of these examples we cannot be sure that per-vertex normals are provided. A sensible fallback
-    // is to use this little trick to compute per-fragment flat-shaded normals from the world positions using derivative operations.
-    vec3 normal = normalize(cross(dFdy(worldPosition.xyz), dFdx(worldPosition.xyz)));
+    vec3 worldSpaceNormal = normalize(cross(dFdy(worldPosition.xyz), dFdx(worldPosition.xyz)));
+    worldSpaceNormal *= -1.0; // Not sure why we have to invert this... to be checked.
     
-    // We are just using the normal as the output color, and making it lighter so it looks a bit nicer.
-    // Obviously a real shader would also do texuring, lighting, or whatever is required for the application.
-    outputColor = vec4(abs(normal) * 0.5 + vec3(0.5, 0.5, 0.5), 1.0);
+    // Basic lighting calculation for overhead light.
+    float ambient = 0.3;
+    float diffuse = 0.7;
+    vec3 lightDir = normalize(vec3(0.2, 0.8, 0.4));
+    float nDotL = clamp(dot(normalize(worldSpaceNormal), lightDir), 0.0, 1.0);
+    float lightIntensity = ambient + diffuse * nDotL;
+    
+    outputColor = voxelColor * lightIntensity;
 }

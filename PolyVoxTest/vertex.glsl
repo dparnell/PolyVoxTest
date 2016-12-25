@@ -1,18 +1,34 @@
-#version 140
+#version 330 core
 
-in vec4 position; // This will be the position of the vertex in model-space
+layout(location = 0) in vec4 position;
+layout(location = 2) in uint quantizedColor;
 
 // The usual matrices are provided
 uniform mat4 projectionMatrix;
 uniform mat4 viewMatrix;
 uniform mat4 modelMatrix;
 
-// This will be used by the fragment shader to calculate flat-shaded normals. This is an unconventional approach
-// but we use it in this example framework because not all surface extractor generate surface normals.
+vec3 decodeColor(uint quantizedColor)
+{
+    quantizedColor >>= 8;
+    float blue = (quantizedColor & 0xffu);
+    quantizedColor >>= 8;
+    float green = (quantizedColor & 0xffu);
+    quantizedColor >>= 8;
+    float red = (quantizedColor & 0xffu);
+    
+    vec3 result = vec3(red, green, blue);
+    result *= (1.0 / 255.0);
+    return result;
+}
+
 out vec4 worldPosition;
+out vec3 voxelColor;
 
 void main()
 {
+    // Extract and decode the color.
+    voxelColor = decodeColor(quantizedColor);
     // Standard sequence of OpenGL transformations.
     worldPosition = modelMatrix * position;
     vec4 cameraPosition = viewMatrix * worldPosition;

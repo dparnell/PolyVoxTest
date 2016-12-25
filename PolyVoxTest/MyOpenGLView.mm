@@ -14,7 +14,7 @@
 //Use the PolyVox namespace
 using namespace PolyVox;
 
-void createSphereInVolume(RawVolume<uint8_t>& volData, float fRadius)
+void createSphereInVolume(RawVolume<uint32_t>& volData, float fRadius, uint32_t colour)
 {
     //This vector hold the position of the center of the volume
     Vector3DFloat v3dVolCenter(volData.getWidth() / 2, volData.getHeight() / 2, volData.getDepth() / 2);
@@ -31,13 +31,13 @@ void createSphereInVolume(RawVolume<uint8_t>& volData, float fRadius)
                 //And compute how far the current position is from the center of the volume
                 float fDistToCenter = (v3dCurrentPos - v3dVolCenter).length();
                 
-                uint8_t uVoxelValue = 0;
+                uint32_t uVoxelValue = 0;
                 
                 //If the current voxel is less than 'radius' units from the center then we make it solid.
                 if (fDistToCenter <= fRadius)
                 {
                     //Our new voxel value
-                    uVoxelValue = x - y - z;
+                    uVoxelValue = colour;
                 }
                 
                 //Wrte the voxel value into the volume	
@@ -74,6 +74,8 @@ RawVolume<uint8_t> volData(PolyVox::Region(Vector3DInt32(0, 0, 0), Vector3DInt32
     
     [[self openGLContext] makeCurrentContext];
     
+    glEnable(GL_CULL_FACE);
+    
     glEnable(GL_DEPTH_TEST);
     glDepthMask(GL_TRUE);
     glDepthFunc(GL_LEQUAL);
@@ -88,13 +90,14 @@ RawVolume<uint8_t> volData(PolyVox::Region(Vector3DInt32(0, 0, 0), Vector3DInt32
     scene.setupShaders(vertexShader.UTF8String, fragmentShader.UTF8String);
     
     // Create an empty volume and then place a sphere in it
-    RawVolume<uint8_t> volData(PolyVox::Region(Vector3DInt32(0, 0, 0), Vector3DInt32(63, 63, 63)));
-    createSphereInVolume(volData, 30);
+    RawVolume<uint32_t> volData(PolyVox::Region(Vector3DInt32(0, 0, 0), Vector3DInt32(63, 63, 63)));
+    createSphereInVolume(volData, 30, 0xffffffff);
+    volData.setVoxel(0, 32, 0, 0x0000ffff);
+    volData.setVoxel(0,  0, 0, 0x00ff00ff);
+    volData.setVoxel(0, 62, 0, 0xff0000ff);
     
     // Extract the surface for the specified region of the volume. Uncomment the line for the kind of surface extraction you want to see.
     auto mesh = extractCubicMesh(&volData, volData.getEnclosingRegion());
-    mesh.setOffset(Vector3DInt32(32,32,32));
-    
     
     // The surface extractor outputs the mesh in an efficient compressed format which is not directly suitable for rendering. The easiest approach is to
     // decode this on the CPU as shown below, though more advanced applications can upload the compressed mesh to the GPU and decompress in shader code.

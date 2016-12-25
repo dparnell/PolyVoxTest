@@ -82,7 +82,7 @@ public:
         // we're just uploading it as a set of bytes which we can read individually, but real code will want to do something specialised here.
         glEnableVertexAttribArray(2); //We're talking about shader attribute '2'
         GLint size = (GLint)(std::min)(sizeof(typename MeshType::VertexType::DataType), size_t(4)); // Can't upload more that 4 components (vec4 is GLSL's biggest type)
-        glVertexAttribIPointer(2, size, GL_UNSIGNED_BYTE, sizeof(typename MeshType::VertexType), (GLvoid*)(offsetof(typename MeshType::VertexType, data)));
+        glVertexAttribIPointer(2, size, GL_UNSIGNED_INT, sizeof(typename MeshType::VertexType), (GLvoid*)(offsetof(typename MeshType::VertexType, data)));
         
         // We're done uploading and can now unbind.
         glBindVertexArray(0);
@@ -114,6 +114,7 @@ public:
     void render() {
         GLfloat mat[4 * 4];
         GLfloat rot[4 * 4];
+        GLfloat off[4 * 4];
         
         glUseProgram(program);
         
@@ -125,6 +126,7 @@ public:
         {
             bzero(mat, sizeof(mat));
         
+            setTranslationMatrix(off, -32, -32, -32);
             //Set up the model matrrix based on provided translation and scale.
             mat[0] = meshData.scale;
             mat[5] = meshData.scale;
@@ -136,8 +138,9 @@ public:
 
             rotationMatrix(rot, meshData.rotationAxis, meshData.rotationAngle);
             
-            multMatrix(rot, mat);
-            glUniformMatrix4fv(modelMatrixLoc, 1, false, rot);
+            multMatrix(rot, off);
+            multMatrix(mat, rot);
+            glUniformMatrix4fv(modelMatrixLoc, 1, false, mat);
             
             // Bind the vertex array for the current mesh
             glBindVertexArray(meshData.vertexArrayObject);
