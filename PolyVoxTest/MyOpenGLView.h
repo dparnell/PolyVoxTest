@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MyOpenGLView.h
 //  PolyVoxTest
 //
 //  Created by Daniel Parnell on 24/12/16.
@@ -7,11 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <OpenGL/OpenGL.h>
 
-@interface ViewController : NSViewController
-
-@property (nonatomic, weak) IBOutlet NSOpenGLView* glView;
+@interface MyOpenGLView : NSOpenGLView
 
 @end
-

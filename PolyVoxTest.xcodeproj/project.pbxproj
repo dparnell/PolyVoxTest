@@ -12,6 +12,12 @@
 		6587331D1E0E07F6005480FC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6587331C1E0E07F6005480FC /* ViewController.m */; };
 		6587331F1E0E07F6005480FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6587331E1E0E07F6005480FC /* Assets.xcassets */; };
 		658733221E0E07F6005480FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 658733201E0E07F6005480FC /* Main.storyboard */; };
+		6587332E1E0E0E9F005480FC /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6587332C1E0E0E9F005480FC /* GLKit.framework */; };
+		6587332F1E0E0E9F005480FC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6587332D1E0E0E9F005480FC /* OpenGL.framework */; };
+		6587333E1E0E128D005480FC /* MyOpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6587333D1E0E128D005480FC /* MyOpenGLView.mm */; };
+		658733411E0E15B2005480FC /* MyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6587333F1E0E15B2005480FC /* MyScene.cpp */; };
+		658733431E0E1987005480FC /* vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 658733421E0E1987005480FC /* vertex.glsl */; };
+		658733461E0E19E5005480FC /* fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 658733451E0E19E5005480FC /* fragment.glsl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,15 @@
 		6587331E1E0E07F6005480FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		658733211E0E07F6005480FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		658733231E0E07F6005480FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		658733291E0E0E78005480FC /* PolyVox */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PolyVox; sourceTree = "<group>"; };
+		6587332C1E0E0E9F005480FC /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		6587332D1E0E0E9F005480FC /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		6587333C1E0E128D005480FC /* MyOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenGLView.h; sourceTree = "<group>"; };
+		6587333D1E0E128D005480FC /* MyOpenGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyOpenGLView.mm; sourceTree = "<group>"; };
+		6587333F1E0E15B2005480FC /* MyScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyScene.cpp; sourceTree = "<group>"; };
+		658733401E0E15B2005480FC /* MyScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MyScene.hpp; sourceTree = "<group>"; };
+		658733421E0E1987005480FC /* vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex.glsl; path = PolyVoxTest/vertex.glsl; sourceTree = "<group>"; };
+		658733451E0E19E5005480FC /* fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment.glsl; path = PolyVoxTest/fragment.glsl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +46,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6587332E1E0E0E9F005480FC /* GLKit.framework in Frameworks */,
+				6587332F1E0E0E9F005480FC /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +59,7 @@
 			children = (
 				658733141E0E07F6005480FC /* PolyVoxTest */,
 				658733131E0E07F6005480FC /* Products */,
+				6587332B1E0E0E9F005480FC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,10 +74,16 @@
 		658733141E0E07F6005480FC /* PolyVoxTest */ = {
 			isa = PBXGroup;
 			children = (
+				658733441E0E19A7005480FC /* Resources */,
+				658733291E0E0E78005480FC /* PolyVox */,
 				658733151E0E07F6005480FC /* AppDelegate.h */,
 				658733161E0E07F6005480FC /* AppDelegate.m */,
 				6587331B1E0E07F6005480FC /* ViewController.h */,
 				6587331C1E0E07F6005480FC /* ViewController.m */,
+				658733401E0E15B2005480FC /* MyScene.hpp */,
+				6587333F1E0E15B2005480FC /* MyScene.cpp */,
+				6587333C1E0E128D005480FC /* MyOpenGLView.h */,
+				6587333D1E0E128D005480FC /* MyOpenGLView.mm */,
 				6587331E1E0E07F6005480FC /* Assets.xcassets */,
 				658733201E0E07F6005480FC /* Main.storyboard */,
 				658733231E0E07F6005480FC /* Info.plist */,
@@ -74,6 +98,25 @@
 				658733191E0E07F6005480FC /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6587332B1E0E0E9F005480FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6587332C1E0E0E9F005480FC /* GLKit.framework */,
+				6587332D1E0E0E9F005480FC /* OpenGL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		658733441E0E19A7005480FC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				658733421E0E1987005480FC /* vertex.glsl */,
+				658733451E0E19E5005480FC /* fragment.glsl */,
+			);
+			name = Resources;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +178,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				658733461E0E19E5005480FC /* fragment.glsl in Resources */,
 				6587331F1E0E07F6005480FC /* Assets.xcassets in Resources */,
+				658733431E0E1987005480FC /* vertex.glsl in Resources */,
 				658733221E0E07F6005480FC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +195,8 @@
 				6587331D1E0E07F6005480FC /* ViewController.m in Sources */,
 				6587331A1E0E07F6005480FC /* main.m in Sources */,
 				658733171E0E07F6005480FC /* AppDelegate.m in Sources */,
+				6587333E1E0E128D005480FC /* MyOpenGLView.mm in Sources */,
+				658733411E0E15B2005480FC /* MyScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
