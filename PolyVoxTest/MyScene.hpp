@@ -16,17 +16,12 @@
 #include "PolyVox/Mesh.h"
 #include "PolyVox/RawVolume.h"
 
-
-
 void crossProduct( GLfloat *a, GLfloat *b, GLfloat *res);
 void normalize(GLfloat *a);
 void setIdentityMatrix( GLfloat *mat, int size);
 void multMatrix(GLfloat *a, GLfloat *b);
 void setTranslationMatrix(float *mat, float x, float y, float z);
 void rotationMatrix(GLfloat *mat, GLfloat *axis, GLfloat angle);
-
-
-#define PI 3.14159265358979f
 
 // This structure holds all the data required
 // to render one of our meshes through OpenGL.
@@ -195,7 +190,7 @@ public:
             crossProduct(right,dir,up);
             normalize(up);
          
-            float aux[16];
+            float aux[4*4];
          
             viewMatrix[0]  = right[0];
             viewMatrix[4]  = right[1];
@@ -308,8 +303,8 @@ public:
     std::vector<OpenGLMeshData> mMeshData;
     
     // storage for Matrices
-    GLfloat projMatrix[16];
-    GLfloat viewMatrix[16];
+    GLfloat projMatrix[4*4];
+    GLfloat viewMatrix[4*4];
     
 };
 

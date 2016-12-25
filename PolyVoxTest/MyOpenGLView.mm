@@ -91,9 +91,9 @@ void createSphereInVolume(RawVolume<uint32_t>& volData, float fRadius, uint32_t 
     // Create an empty volume and then place a sphere in it
     RawVolume<uint32_t> volData(PolyVox::Region(Vector3DInt32(0, 0, 0), Vector3DInt32(63, 63, 63)));
     createSphereInVolume(volData, 30, 0xffffffff);
-    volData.setVoxel(0, 32, 0, 0x0000ffff);
-    volData.setVoxel(0,  0, 0, 0x00ff00ff);
-    volData.setVoxel(0, 62, 0, 0xff0000ff);
+    volData.setVoxel(0, 62, 0, 0x0000ffff);
+    volData.setVoxel(0, 32, 0, 0x00ff00ff);
+    volData.setVoxel(0,  0, 0, 0xff0000ff);
     
     for(int x=0; x<62; x++) {
         for(int y=0; y<62; y++) {
