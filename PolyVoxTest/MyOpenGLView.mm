@@ -37,7 +37,7 @@ void createSphereInVolume(RawVolume<uint32_t>& volData, float fRadius, uint32_t 
                 if (fDistToCenter <= fRadius)
                 {
                     //Our new voxel value
-                    uVoxelValue = colour;
+                    uVoxelValue =  colour;
                 }
                 
                 //Wrte the voxel value into the volume	
@@ -95,6 +95,11 @@ void createSphereInVolume(RawVolume<uint32_t>& volData, float fRadius, uint32_t 
     volData.setVoxel(0,  0, 0, 0x00ff00ff);
     volData.setVoxel(0, 62, 0, 0xff0000ff);
     
+    for(int x=0; x<62; x++) {
+        for(int y=0; y<62; y++) {
+            volData.setVoxel(x, y, 62, rand() << 8);
+        }
+    }
     // Extract the surface for the specified region of the volume. Uncomment the line for the kind of surface extraction you want to see.
     auto mesh = extractCubicMesh(&volData, volData.getEnclosingRegion());
     
