@@ -1,8 +1,2 @@
-/build/
-/chromium/.gclient
-/chromium/.gclient_entries
-/chromium/README-archive
-/chromium/src/
 xcuserdata
-
 .DS_Store
