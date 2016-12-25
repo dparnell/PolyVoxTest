@@ -47,8 +47,6 @@ void createSphereInVolume(RawVolume<uint32_t>& volData, float fRadius, uint32_t 
     }
 }
 
-RawVolume<uint8_t> volData(PolyVox::Region(Vector3DInt32(0, 0, 0), Vector3DInt32(63, 63, 63)));
-
 @implementation MyOpenGLView {
     MyScene scene;
 }
@@ -59,6 +57,7 @@ RawVolume<uint8_t> volData(PolyVox::Region(Vector3DInt32(0, 0, 0), Vector3DInt32
         NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersion3_2Core,
         NSOpenGLPFAColorSize    , 24                           ,
         NSOpenGLPFAAlphaSize    , 8                            ,
+        NSOpenGLPFADepthSize    , 16                           ,
         NSOpenGLPFADoubleBuffer ,
         NSOpenGLPFAAccelerated  ,
         NSOpenGLPFANoRecovery   ,
@@ -78,7 +77,7 @@ RawVolume<uint8_t> volData(PolyVox::Region(Vector3DInt32(0, 0, 0), Vector3DInt32
     
     glEnable(GL_DEPTH_TEST);
     glDepthMask(GL_TRUE);
-    glDepthFunc(GL_LEQUAL);
+    glDepthFunc(GL_LESS);
     glDepthRange(0.0, 1.0);
 
     glClearColor(0, 0, 0, 0);
