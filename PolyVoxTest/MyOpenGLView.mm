@@ -7,45 +7,12 @@
 //
 
 #import "MyOpenGLView.h"
-
+#import "pico_png.h"
 
 #include "MyScene.hpp"
 
 //Use the PolyVox namespace
 using namespace PolyVox;
-
-void createSphereInVolume(RawVolume<uint32_t>& volData, float fRadius, uint32_t colour)
-{
-    //This vector hold the position of the center of the volume
-    Vector3DFloat v3dVolCenter(volData.getWidth() / 2, volData.getHeight() / 2, volData.getDepth() / 2);
-    
-    //This three-level for loop iterates over every voxel in the volume
-    for (int z = 0; z < volData.getDepth(); z++)
-    {
-        for (int y = 0; y < volData.getHeight(); y++)
-        {
-            for (int x = 0; x < volData.getWidth(); x++)
-            {
-                //Store our current position as a vector...
-                Vector3DFloat v3dCurrentPos(x, y, z);
-                //And compute how far the current position is from the center of the volume
-                float fDistToCenter = (v3dCurrentPos - v3dVolCenter).length();
-                
-                uint32_t uVoxelValue = 0;
-                
-                //If the current voxel is less than 'radius' units from the center then we make it solid.
-                if (fDistToCenter <= fRadius)
-                {
-                    //Our new voxel value
-                    uVoxelValue =  colour;
-                }
-                
-                //Wrte the voxel value into the volume	
-                volData.setVoxel(x, y, z, uVoxelValue);
-            }
-        }
-    }
-}
 
 @implementation MyOpenGLView {
     MyScene scene;
@@ -87,28 +54,51 @@ void createSphereInVolume(RawVolume<uint32_t>& volData, float fRadius, uint32_t 
     NSString *fragmentShader = [NSString stringWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"fragment" ofType: @"glsl"] encoding: NSUTF8StringEncoding error: nil];
     
     scene.setupShaders(vertexShader.UTF8String, fragmentShader.UTF8String);
+
+    NSData *tiles_png = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Tiles16x16" ofType: @"png"]];
+    unsigned char decoded_tiles[640 * 592 * 3];
+    unsigned long image_width;
+    unsigned long image_height;
+    decodePNG(decoded_tiles, sizeof(decoded_tiles), image_width, image_height, (const unsigned char*)[tiles_png bytes], [tiles_png length]);
     
-    // Create an empty volume and then place a sphere in it
-    RawVolume<uint32_t> volData(PolyVox::Region(Vector3DInt32(0, 0, 0), Vector3DInt32(63, 63, 63)));
-    createSphereInVolume(volData, 30, 0xffffffff);
-    volData.setVoxel(0, 62, 0, 0x0000ffff);
-    volData.setVoxel(0, 32, 0, 0x00ff00ff);
-    volData.setVoxel(0,  0, 0, 0xff0000ff);
-    
-    for(int x=0; x<62; x++) {
-        for(int y=0; y<62; y++) {
-            volData.setVoxel(x, y, 62, rand() << 8);
+
+    NSLog(@"Building meshes...");
+    for(uint32_t i=0; i < image_width; i += 16) {
+        for(uint32_t j=0; j < image_height; j += 16) {
+            uint32_t base_address = (i*3) + (j*(uint32_t)image_width*3);
+            
+            RawVolume<uint32_t> volData(PolyVox::Region(Vector3DInt32(0, 0, 0), Vector3DInt32(17, 17, 17)));
+            for(uint8_t x = 0; x<16; x++) {
+                for(uint8_t y = 0; y<16; y++) {
+                    uint32_t pixel_address = base_address + x*3 + y*(uint32_t)image_width*3;
+                    unsigned char r = decoded_tiles[pixel_address + 0];
+                    unsigned char g = decoded_tiles[pixel_address + 1];
+                    unsigned char b = decoded_tiles[pixel_address + 2];
+                    if(r != 0x47 || g != 0x6c || b != 0x6c) {
+                        if(r == 0 && g == 0 && b == 0) {
+                            r = 33;
+                            g = 33;
+                            b = 33;
+                        }
+                        
+                        for(uint8_t z = 0; z<16; z++) {
+                            volData.setVoxel(x, z, y, r << 24 | g << 16 | b << 8 | 0xff);
+                        }
+                    }
+                }
+            }
+            
+            // Extract the surface for the specified region of the volume. Uncomment the line for the kind of surface extraction you want to see.
+            auto mesh = extractCubicMesh(&volData, volData.getEnclosingRegion());
+            
+            // The surface extractor outputs the mesh in an efficient compressed format which is not directly suitable for rendering. The easiest approach is to
+            // decode this on the CPU as shown below, though more advanced applications can upload the compressed mesh to the GPU and decompress in shader code.
+            auto decodedMesh = decodeMesh(mesh);
+            
+            //Pass the surface to the OpenGL window
+            scene.addMesh(decodedMesh, Vector3DInt32(i - 320, 0, j - 296));
         }
     }
-    // Extract the surface for the specified region of the volume. Uncomment the line for the kind of surface extraction you want to see.
-    auto mesh = extractCubicMesh(&volData, volData.getEnclosingRegion());
-    
-    // The surface extractor outputs the mesh in an efficient compressed format which is not directly suitable for rendering. The easiest approach is to
-    // decode this on the CPU as shown below, though more advanced applications can upload the compressed mesh to the GPU and decompress in shader code.
-    auto decodedMesh = decodeMesh(mesh);
-    
-    //Pass the surface to the OpenGL window
-    scene.addMesh(decodedMesh);
     
     [NSTimer scheduledTimerWithTimeInterval: 1.0/50.0 repeats: YES block:^(NSTimer * _Nonnull timer) {
         [self setNeedsDisplay: YES];
@@ -124,22 +114,26 @@ void createSphereInVolume(RawVolume<uint32_t>& volData, float fRadius, uint32_t 
     float ratio;
     // Prevent a divide by zero, when window is too short
     // (you cant make a window of zero width).
-    if(h == 0)
-            h = 1;
- 
+    if(h == 0) {
+        h = 1;
+    }
+    
     // Set the viewport to be the entire window
     // glViewport(0, 0, w, h);
  
     ratio = (1.0f * w) / h;
-    scene.buildProjectionMatrix(53.13f, ratio, 1.0f, 300.0f);
+    scene.buildProjectionMatrix(53.13f, ratio, 1.0f, 1200.0f);
 }
 
+float th = 0;
+
 - (void)drawRect:(NSRect)dirtyRect {
-    scene.mMeshData[0].rotationAngle += 0.01;
+    // scene.mMeshData[0].rotationAngle += 0.01;
+    th += 0.01;
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    scene.setCamera(100.0, 100.0, 100.0, 0.0, 0.0, 0.0);
+    scene.setCamera(300.0 * sin(th), 100.0, 600.0 * cos(th), 0.0, 0.0, 0.0);
     
     scene.render();
 

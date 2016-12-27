@@ -33,6 +33,7 @@ struct OpenGLMeshData
     GLuint vertexBuffer;
     GLuint vertexArrayObject;
     GLfloat translation[3];
+    GLfloat offset[3];
     GLfloat scale;
     GLfloat rotationAxis[3];
     GLfloat rotationAngle;
@@ -42,7 +43,7 @@ class MyScene {
 public:
     // Convert a PolyVox mesh to OpenGL index/vertex buffers. Inlined because it's templatised.
     template <typename MeshType>
-    void addMesh(const MeshType& surfaceMesh, const PolyVox::Vector3DInt32& translation = PolyVox::Vector3DInt32(0, 0, 0), float scale = 1.0f)
+    void addMesh(const MeshType& surfaceMesh, const PolyVox::Vector3DInt32& translation = PolyVox::Vector3DInt32(0, 0, 0), float scale = 1.0f, const PolyVox::Vector3DInt32& offset = PolyVox::Vector3DInt32(0, 0, 0))
     {
         // This struct holds the OpenGL properties (buffer handles, etc) which will be used
         // to render our mesh. We copy the data from the PolyVox mesh into this structure.
@@ -87,6 +88,9 @@ public:
         meshData.translation[0] = translation.getX();
         meshData.translation[1] = translation.getY();
         meshData.translation[2] = translation.getZ();
+        meshData.offset[0] = offset.getX();
+        meshData.offset[1] = offset.getY();
+        meshData.offset[2] = offset.getZ();
         meshData.scale = scale;
         meshData.rotationAxis[0] = 0;
         meshData.rotationAxis[1] = 1;
@@ -121,7 +125,7 @@ public:
         {
             bzero(mat, sizeof(mat));
         
-            setTranslationMatrix(off, -32, -32, -32);
+            setTranslationMatrix(off, -meshData.offset[0], -meshData.offset[1], -meshData.offset[2]);
             //Set up the model matrrix based on provided translation and scale.
             mat[0] = meshData.scale;
             mat[5] = meshData.scale;

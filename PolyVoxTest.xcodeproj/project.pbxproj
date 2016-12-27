@@ -18,6 +18,7 @@
 		658733411E0E15B2005480FC /* MyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6587333F1E0E15B2005480FC /* MyScene.cpp */; };
 		658733431E0E1987005480FC /* vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 658733421E0E1987005480FC /* vertex.glsl */; };
 		658733461E0E19E5005480FC /* fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 658733451E0E19E5005480FC /* fragment.glsl */; };
+		6592BC181E11E9AA001EAD16 /* Tiles16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 6592BC171E11E9AA001EAD16 /* Tiles16x16.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		658733401E0E15B2005480FC /* MyScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MyScene.hpp; sourceTree = "<group>"; };
 		658733421E0E1987005480FC /* vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex.glsl; path = PolyVoxTest/vertex.glsl; sourceTree = "<group>"; };
 		658733451E0E19E5005480FC /* fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment.glsl; path = PolyVoxTest/fragment.glsl; sourceTree = "<group>"; };
+		6592BC171E11E9AA001EAD16 /* Tiles16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Tiles16x16.png; path = PolyVoxTest/Tiles16x16.png; sourceTree = "<group>"; };
+		6592BC191E11EA48001EAD16 /* pico_png.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = pico_png.h; path = ../../../../Documents/Arduino/neopixel/pico_png.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +79,7 @@
 			children = (
 				658733441E0E19A7005480FC /* Resources */,
 				658733291E0E0E78005480FC /* PolyVox */,
+				6592BC191E11EA48001EAD16 /* pico_png.h */,
 				658733151E0E07F6005480FC /* AppDelegate.h */,
 				658733161E0E07F6005480FC /* AppDelegate.m */,
 				6587331B1E0E07F6005480FC /* ViewController.h */,
@@ -112,6 +116,7 @@
 		658733441E0E19A7005480FC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6592BC171E11E9AA001EAD16 /* Tiles16x16.png */,
 				658733421E0E1987005480FC /* vertex.glsl */,
 				658733451E0E19E5005480FC /* fragment.glsl */,
 			);
@@ -178,6 +183,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6592BC181E11E9AA001EAD16 /* Tiles16x16.png in Resources */,
 				658733461E0E19E5005480FC /* fragment.glsl in Resources */,
 				6587331F1E0E07F6005480FC /* Assets.xcassets in Resources */,
 				658733431E0E1987005480FC /* vertex.glsl in Resources */,
@@ -346,6 +352,7 @@
 				658733281E0E07F6005480FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
