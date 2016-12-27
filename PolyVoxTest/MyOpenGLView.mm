@@ -76,9 +76,9 @@ using namespace PolyVox;
                     unsigned char b = decoded_tiles[pixel_address + 2];
                     if(r != 0x47 || g != 0x6c || b != 0x6c) {
                         if(r == 0 && g == 0 && b == 0) {
-                            r = 33;
-                            g = 33;
-                            b = 33;
+                            r = 15;
+                            g = 15;
+                            b = 15;
                         }
                         
                         for(uint8_t z = 0; z<16; z++) {
